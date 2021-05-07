@@ -13,7 +13,7 @@
         <input type="hidden" name="id" value="0" />
         <div class="form-group col-md-5">
             <label for="name">Дата регистрации:</label>
-            <input class="form-control" name="dateRegistration" type="date" />
+            <input class="form-control" name="Registration" type="date" />
         </div>
         <div class="form-group col-md-5">
             <label for="age">Последняя активность:</label>
@@ -59,18 +59,18 @@
                 const user = await response.json();
                 const form = document.forms["userForm"];
                 form.elements["id"].value = user.id;
-                form.elements["dataRegistration"].value = user.dateRegistration;
+                form.elements["Registration"].value = user.dateRagistration;
                 form.elements["lastActivity"].value = user.dataLastActivity;
             }
         }
         // Добавление пользователя
-        async function CreateUser(dateRegistration, lastActivity) {
+        async function CreateUser(Registration, lastActivity) {
  
             const response = await fetch("api/users", {
                 method: "POST",
                 headers: { "Accept": "application/json", "Content-Type": "application/json" },
                 body: JSON.stringify({
-                    dateRegistration: dateRegistration,
+                    dateRagistration: Registration,
                     dataLastActivity: lastActivity
                 })
             });
@@ -81,13 +81,13 @@
             }
         }
         // Изменение пользователя
-        async function EditUser(userId, dateRegistration, lastActivity) {
+        async function EditUser(userId, Registration, lastActivity) {
             const response = await fetch("api/users", {
                 method: "PUT",
                 headers: { "Accept": "application/json", "Content-Type": "application/json" },
                 body: JSON.stringify({
                     id: parseInt(userId, 10),
-                    dateRegistration: dateRegistration,
+                    dateRagistration: Registration,
                     dataLastActivity: lastActivity
                 })
             });
@@ -125,13 +125,13 @@
             idTd.append(user.id);
             tr.append(idTd);
  
-            const nameTd = document.createElement("td");
-            nameTd.append(user.dateRegistration);
-            tr.append(nameTd);
+            const registrationTd = document.createElement("td");
+            registrationTd.append(user.dateRagistration);
+            tr.append(registrationTd);
  
-            const ageTd = document.createElement("td");
-            ageTd.append(user.dataLastActivity);
-            tr.append(ageTd);
+            const activityTd = document.createElement("td");
+            activityTd.append(user.dataLastActivity);
+            tr.append(activityTd);
              
             const linksTd = document.createElement("td");
  
@@ -173,7 +173,7 @@
             e.preventDefault();
             const form = document.forms["userForm"];
             const id = form.elements["id"].value;
-            const dateRegistration = form.elements["dateRegistration"].value;
+            const dateRegistration = form.elements["Registration"].value;
             const lastActivity = form.elements["lastActivity"].value;
             if (id == 0)
                 CreateUser(dateRegistration, lastActivity);

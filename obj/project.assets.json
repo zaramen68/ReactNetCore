@@ -9212,23 +9212,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\миша_64\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\zaram\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\react_pro\\aspNetCore\\aspNetCore.csproj",
+      "projectUniqueName": "C:\\projects\\ReactNetCore\\aspNetCore.csproj",
       "projectName": "aspNetCore",
-      "projectPath": "E:\\react_pro\\aspNetCore\\aspNetCore.csproj",
-      "packagesPath": "C:\\Users\\миша_64\\.nuget\\packages\\",
-      "outputPath": "E:\\react_pro\\aspNetCore\\obj\\",
+      "projectPath": "C:\\projects\\ReactNetCore\\aspNetCore.csproj",
+      "packagesPath": "C:\\Users\\zaram\\.nuget\\packages\\",
+      "outputPath": "C:\\projects\\ReactNetCore\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\миша_64\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\zaram\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
@@ -9320,7 +9323,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }
