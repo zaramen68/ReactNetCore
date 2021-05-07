@@ -13,7 +13,7 @@
         <input type="hidden" name="id" value="0" />
         <div class="form-group col-md-5">
             <label for="name">Дата регистрации:</label>
-            <input class="form-control" name="dateRegistration" type="date" />
+            <input class="form-control" name="Registration" type="date" />
         </div>
         <div class="form-group col-md-5">
             <label for="age">Последняя активность:</label>
@@ -42,7 +42,7 @@
             if (response.ok === true) {
                 // получаем данные
                 const users = await response.json();
-                let rows = document.querySelector("tbody"); 
+                let rows = document.querySelector("tbody");
                 users.forEach(user => {
                     // добавляем полученные элементы в таблицу
                     rows.append(row(user));
@@ -59,19 +59,19 @@
                 const user = await response.json();
                 const form = document.forms["userForm"];
                 form.elements["id"].value = user.id;
-                form.elements["name"].value = user.name;
-                form.elements["age"].value = user.age;
+                form.elements["Registration"].value = user.dateRagistration;
+                form.elements["lastActivity"].value = user.dataLastActivity;
             }
         }
         // Добавление пользователя
-        async function CreateUser(userName, userAge) {
- 
+        async function CreateUser(Registration, lastActivity) {
+
             const response = await fetch("api/users", {
                 method: "POST",
                 headers: { "Accept": "application/json", "Content-Type": "application/json" },
                 body: JSON.stringify({
-                    name: userName,
-                    age: parseInt(userAge, 10)
+                    dateRagistration: Registration,
+                    dataLastActivity: lastActivity
                 })
             });
             if (response.ok === true) {
@@ -81,14 +81,14 @@
             }
         }
         // Изменение пользователя
-        async function EditUser(userId, userName, userAge) {
+        async function EditUser(userId, Registration, lastActivity) {
             const response = await fetch("api/users", {
                 method: "PUT",
                 headers: { "Accept": "application/json", "Content-Type": "application/json" },
                 body: JSON.stringify({
                     id: parseInt(userId, 10),
-                    name: userName,
-                    age: parseInt(userAge, 10)
+                    dateRagistration: Registration,
+                    dataLastActivity: lastActivity
                 })
             });
             if (response.ok === true) {
@@ -108,7 +108,7 @@
                 document.querySelector("tr[data-rowid='" + user.id + "']").remove();
             }
         }
- 
+
         // сброс формы
         function reset() {
             const form = document.forms["userForm"];
@@ -117,73 +117,73 @@
         }
         // создание строки для таблицы
         function row(user) {
- 
+
             const tr = document.createElement("tr");
             tr.setAttribute("data-rowid", user.id);
- 
+
             const idTd = document.createElement("td");
             idTd.append(user.id);
             tr.append(idTd);
- 
-            const nameTd = document.createElement("td");
-            nameTd.append(user.name);
-            tr.append(nameTd);
- 
-            const ageTd = document.createElement("td");
-            ageTd.append(user.age);
-            tr.append(ageTd);
-             
+
+            const registrationTd = document.createElement("td");
+            registrationTd.append(user.dateRagistration);
+            tr.append(registrationTd);
+
+            const activityTd = document.createElement("td");
+            activityTd.append(user.dataLastActivity);
+            tr.append(activityTd);
+
             const linksTd = document.createElement("td");
- 
+
             const editLink = document.createElement("a");
             editLink.setAttribute("data-id", user.id);
             editLink.setAttribute("style", "cursor:pointer;padding:15px;");
             editLink.append("Изменить");
             editLink.addEventListener("click", e => {
- 
+
                 e.preventDefault();
                 GetUser(user.id);
             });
             linksTd.append(editLink);
- 
+
             const removeLink = document.createElement("a");
             removeLink.setAttribute("data-id", user.id);
             removeLink.setAttribute("style", "cursor:pointer;padding:15px;");
             removeLink.append("Удалить");
             removeLink.addEventListener("click", e => {
- 
+
                 e.preventDefault();
                 DeleteUser(user.id);
             });
- 
+
             linksTd.append(removeLink);
             tr.appendChild(linksTd);
- 
+
             return tr;
         }
         // сброс значений формы
         document.getElementById("reset").click(function (e) {
- 
+
             e.preventDefault();
             reset();
         })
- 
+
         // отправка формы
         document.forms["userForm"].addEventListener("submit", e => {
             e.preventDefault();
             const form = document.forms["userForm"];
             const id = form.elements["id"].value;
-            const name = form.elements["name"].value;
-            const age = form.elements["age"].value;
+            const dateRegistration = form.elements["Registration"].value;
+            const lastActivity = form.elements["lastActivity"].value;
             if (id == 0)
-                CreateUser(name, age);
+                CreateUser(dateRegistration, lastActivity);
             else
-                EditUser(id, name, age);
+                EditUser(id, dateRegistration, lastActivity);
         });
- 
+
         // загрузка пользователей
         GetUsers();
- 
+
     </script>
 </body>
 </html>
